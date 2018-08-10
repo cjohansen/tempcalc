@@ -1,0 +1,379 @@
+html,
+body {
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  color: #212121;
+  font-family: "Georgia", "Cambria", "Times New Roman", "Times", serif;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+.mod, h1, h2, h3, h4, h5, h6, p, ul, ol, hr, pre, center, dl {
+  margin: 20px;
+}
+
+.tight .mod,
+.tight h1,
+.tight h2,
+.tight h3,
+.tight h4,
+.tight h5,
+.tight h6,
+.tight p,
+.tight ul,
+.tight ol,
+.tight hr,
+.tight pre,
+.tight center,
+.tight dl {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+h2,
+h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+li {
+  margin-left: 16px;
+}
+
+dd {
+  margin: 0;
+}
+
+.link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: normal;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+a:link,
+a:visited,
+.link {
+  color: #1caff6;
+  /* color: #4bb3fd; */
+  /* color: #00487c; */
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover,
+a:link:hover,
+.link:hover {
+  text-decoration: underline;
+}
+
+.subtle {
+  color: #737373;
+}
+
+.subtle a:link,
+.subtle a:visited {
+  color: #807979;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ebe8e3;
+  clear: both;
+}
+
+hr.subtle {}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: #f5f5f5;
+}
+
+/* Text styles */
+.text-m {
+  font-size: 1.0rem;
+}
+
+.text-s {
+  font-size: 0.9rem;
+}
+
+.text-l {
+  font-size: 1.5rem;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+/* Spacing
+ *
+ * Let's start with an admonition: Use these classes sparingly. If you find
+ * yourself adding these classes all the time, consider changing the default
+ * spacing instead.
+ *
+ * Here's the naming scheme:
+ *
+ * First letter: type
+ *  - m: margin
+ *  - p: padding
+ *
+ * Second letter: direction
+ *  - t: top
+ *  - r: right
+ *  - b: bottom
+ *  - l: left
+ *  - h: horizontal
+ *  - v: vertical
+ *  - a: all
+ *
+ * Third letter: size
+ *  -  l: large
+ *  -  m: medium
+ *  -  s: small
+ *  - xs: extra small
+ *  -  n: none
+ *
+ * Examples:
+ *  - mtn: margin top none
+ *  - pvs: padding vertical small
+ */
+
+.man, .mhn, .mln { margin-left: 0 !important; }
+.man, .mhn, .mrn { margin-right: 0 !important; }
+.man, .mvn, .mtn { margin-top: 0 !important; }
+.man, .mvn, .mbn { margin-bottom: 0 !important; }
+
+.mas, .mhs, .mls { margin-left: 10px !important; }
+.mas, .mhs, .mrs { margin-right: 10px !important; }
+.mas, .mvs, .mts { margin-top: 10px !important; }
+.mas, .mvs, .mbs { margin-bottom: 10px !important; }
+
+.mam, .mhm, .mlm { margin-left: 20px !important; }
+.mam, .mhm, .mrm { margin-right: 20px !important; }
+.mam, .mvm, .mtm { margin-top: 20px !important; }
+.mam, .mvm, .mbm { margin-bottom: 20px !important; }
+
+.mal, .mhl, .mll { margin-left: 40px !important; }
+.mal, .mhl, .mrl { margin-right: 40px !important; }
+.mal, .mvl, .mtl { margin-top: 40px !important; }
+.mal, .mvl, .mbl { margin-bottom: 40px !important; }
+
+.maxl, .mhxl, .mlxl { margin-left: 60px !important; }
+.maxl, .mhxl, .mrxl { margin-right: 60px !important; }
+.maxl, .mvxl, .mtxl { margin-top: 60px !important; }
+.maxl, .mvxl, .mbxl { margin-bottom: 60px !important; }
+
+.pan, .phn, .pln { padding-left: 0 !important; }
+.pan, .phn, .prn { padding-right: 0 !important; }
+.pan, .pvn, .ptn { padding-top: 0 !important; }
+.pan, .pvn, .pbn { padding-bottom: 0 !important; }
+
+.pas, .phs, .pls { padding-left: 10px !important; }
+.pas, .phs, .prs { padding-right: 10px !important; }
+.pas, .pvs, .pts { padding-top: 10px !important; }
+.pas, .pvs, .pbs { padding-bottom: 10px !important; }
+
+.paxs, .phxs, .plxs { padding-left: 5px !important; }
+.paxs, .phxs, .prxs { padding-right: 5px !important; }
+.paxs, .pvxs, .ptxs { padding-top: 5px !important; }
+.paxs, .pvxs, .pbxs { padding-bottom: 5px !important; }
+
+.pam, .phm, .plm { padding-left: 20px !important; }
+.pam, .phm, .prm { padding-right: 20px !important; }
+.pam, .pvm, .ptm { padding-top: 20px !important; }
+.pam, .pvm, .pbm { padding-bottom: 20px !important; }
+
+.pal, .phl, .pll { padding-left: 40px !important; }
+.pal, .phl, .prl { padding-right: 40px !important; }
+.pal, .pvl, .ptl { padding-top: 40px !important; }
+.pal, .pvl, .pbl { padding-bottom: 40px !important; }
+
+/* vertical spacing */
+
+.vs-s .mod,
+.vs-s h1,
+.vs-s h2,
+.vs-s h3,
+.vs-s h4,
+.vs-s h5,
+.vs-s h6,
+.vs-s p,
+.vs-s ul,
+.vs-s ol,
+.vs-s hr,
+.vs-s pre {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.vs-l .mod,
+.vs-l h1,
+.vs-l h2,
+.vs-l h3,
+.vs-l h4,
+.vs-l h5,
+.vs-l h6,
+.vs-l p,
+.vs-l ul,
+.vs-l ol,
+.vs-l hr,
+.vs-l pre {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* horizontal spacing */
+
+.hs-s .mod,
+.hs-s h1,
+.hs-s h2,
+.hs-s h3,
+.hs-s h4,
+.hs-s h5,
+.hs-s h6,
+.hs-s p,
+.hs-s ul,
+.hs-s ol,
+.hs-s hr,
+.hs-s pre {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hs-l .mod,
+.hs-l h1,
+.hs-l h2,
+.hs-l h3,
+.hs-l h4,
+.hs-l h5,
+.hs-l h6,
+.hs-l p,
+.hs-l ul,
+.hs-l ol,
+.hs-l hr,
+.hs-l pre {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* Floaters */
+
+.right {
+  float: right !important;
+}
+
+.left {
+  float: left;
+}
+
+/* Grid */
+
+.grid-l,
+.grid,
+.bd {
+  display: flex;
+  flex-direction: row;
+}
+
+.grid {
+  min-height: 100%;
+}
+
+.grid-xs {
+  flex-direction: row;
+}
+
+.grid .grid {
+  min-height: 0;
+}
+
+.grid-center {
+  align-items: center;
+}
+
+.col {flex: 1; overflow: hidden; }
+.c1 {flex: 1; overflow: hidden; }
+.c2 {flex: 2; overflow: hidden; }
+.c3 {flex: 3; overflow: hidden; }
+.c4 {flex: 4; overflow: hidden; }
+.c5 {flex: 5; overflow: hidden; }
+.c6 {flex: 6; overflow: hidden; }
+.c7 {flex: 7; overflow: hidden; }
+.c8 {flex: 8; overflow: hidden; }
+.c9 {flex: 9; overflow: hidden; }
+.c10 {flex: 10; overflow: hidden; }
+.c11 {flex: 11; overflow: hidden; }
+
+.img {
+  display: block;
+}
+
+/* Media elements */
+
+.media {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.media-body {
+  flex-grow: 1;
+  width: 100%;
+}
+
+/* Side-by-side elements */
+
+.related .item {
+  display: inline-block;
+}
+
+.related .item + .item {
+  margin-left: 20px;
+}
+
+/* Ellipsis element */
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
