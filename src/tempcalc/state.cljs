@@ -11,13 +11,15 @@
 (defmulti exec-action (fn [action] action))
 
 (defmethod exec-action :assoc-in-state [_ state k v]
-  (assoc-in state k v))
+  (-> state
+      (update :items vec)
+      (assoc-in k v)))
 
 (defmethod exec-action :add-item [_ state]
   (assoc state :items (conj (vec (calc/solve (:temperature state) (:items state))) {:amount 0})))
 
 (defmethod exec-action :remove-item [_ state idx]
-  (update state :items #(vec (concat (subvec % 0 idx) (subvec % (inc idx))))))
+  (update state :items #(concat (subvec % 0 idx) (subvec % (inc idx)))))
 
 (defn publish [actions & args]
   (reset! store (reduce (fn [state [action & action-args]]
