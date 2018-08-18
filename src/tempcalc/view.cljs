@@ -59,7 +59,7 @@
      (NumberInput (merge {:value temperature
                           :on-change (partial publish (:set-temp actions))}
                          (when calculated?
-                           {:color "#090"
+                           {:color "#030"
                             :disabled? true})))
      (d/div {:className "mls"}
        (button/RoundButton {:action (:remove actions)
