@@ -21,7 +21,7 @@
       nil
       n)))
 
-(defcomponent NumberInput [{:keys [width value color on-input on-change disabled?]}]
+(defcomponent NumberInput [{:keys [width value fontWeight color on-input on-change disabled?]}]
   (d/input
    {:type "number"
     :value value
@@ -41,6 +41,7 @@
             :borderLeft "none"
             :borderRight "none"
             :borderBottom "none"
+            :fontWeight fontWeight
             :borderTop (str "2px solid " (or color "#cbd7dd"))
             :MozAppearance "none"
             :WebkitAppearance "none"
@@ -59,7 +60,8 @@
      (NumberInput (merge {:value temperature
                           :on-change (partial publish (:set-temp actions))}
                          (when calculated?
-                           {:color "#030"
+                           {:color "#060"
+                            :fontWeight "bold"
                             :disabled? true})))
      (d/div {:className "mls"}
        (button/RoundButton {:action (:remove actions)
