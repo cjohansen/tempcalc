@@ -32,7 +32,6 @@
                            {:borderRadius "4px"
                             :width "100%"
                             :minHeight "52px"
-                            :fontSize "20px"
                             :fontWeight "bold"
                             :textDecoration "none"
                             :borderTop 0
@@ -41,4 +40,15 @@
                             :borderBottom "4px solid #ccc"
                             :background "#f0f0f0"})
              :onClick #(publish action)}
+    text))
+
+(defcomponent SquareButton [{:keys [text action color]}]
+  (d/button {:onClick #(publish action)
+             :style (merge button-styles
+                           {:background color
+                            :border "none"
+                            :color "#fff"
+                            :fontWeight "normal"
+                            :minHeight "52px"
+                            :lineHeight "46px"})}
     text))

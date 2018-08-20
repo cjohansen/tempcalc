@@ -2,7 +2,8 @@
   (:require [dumdom.core :as dc :refer [defcomponent]]
             [dumdom.dom :as d]
             [tempcalc.state :refer [publish]]
-            [tempcalc.ui.button :as button]))
+            [tempcalc.ui.button :as button]
+            [tempcalc.ui.swipe-reveal :refer [SwipeReveal]]))
 
 (defcomponent Header []
   (d/div {:className "bd vs-s"
@@ -33,7 +34,7 @@
     :style {:padding "16px 20px"
             :width (or width "100%")
             :fontSize "16px"
-            :fontWeight "400"
+            :fontWeight (or fontWeight "400")
             :background "#fff"
             :borderRadius "2px"
             :boxShadow "none"
@@ -41,11 +42,9 @@
             :borderLeft "none"
             :borderRight "none"
             :borderBottom "none"
-            :fontWeight fontWeight
-            :borderTop (str "2px solid " (or color "#cbd7dd"))
+            :borderTop (str "2px solid " (or color "#b5d1e0"))
             :MozAppearance "none"
             :WebkitAppearance "none"
-            :color color
             :appearance "none"}}))
 
 (defcomponent Row [& cols]
@@ -53,20 +52,23 @@
     (map #(d/div {:className "col"} %) cols)))
 
 (defcomponent Item [{:keys [amount temperature calculated? actions]}]
-  (Row
-   (d/div {:style {:marginRight 20}} (NumberInput {:value amount
-                                                   :on-change (partial publish (:set-amount actions))}))
-   (d/div {:className "grid"}
-     (NumberInput (merge {:value temperature
-                          :on-change (partial publish (:set-temp actions))}
-                         (when calculated?
-                           {:color "#060"
-                            :fontWeight "bold"
-                            :disabled? true})))
-     (d/div {:className "mls"}
-       (button/RoundButton {:action (:remove actions)
-                            :text "—"
-                            :color "#c00"})))))
+  (let [row (Row
+             (d/div {:style {:marginRight 20}} (NumberInput {:value amount
+                                                             :on-input (partial publish (:set-amount actions))}))
+             (d/div {:className "grid"}
+               (NumberInput (merge {:value temperature
+                                    :on-input (partial publish (:set-temp actions))}
+                                   (when calculated?
+                                     {:color "#495b63"
+                                      :fontWeight "bold"
+                                      :disabled? true})))))
+        button (d/div {:className "mrm"}
+                 (button/SquareButton {:text "Delete"
+                                       :action (:remove actions)
+                                       :color "#c00"}))]
+    (if calculated?
+      row
+      (SwipeReveal {:swipee row :hidden button}))))
 
 (defcomponent App [state]
   (d/div {}
