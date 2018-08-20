@@ -14,8 +14,14 @@
 (defn- set-left [el pos]
   (set! (.-left (.-style el)) (str pos "px")))
 
+(defn- animate-left-pos [el pos & [duration]]
+  (let [duration (or duration 150)]
+    (set! (.-transition (.-style el)) (str "left " duration "ms"))
+    (js/setTimeout #(set-left el pos))
+    (js/setTimeout #(set! (.-transition (.-style el)) "") duration)))
+
 (defcomponent SwipeReveal
-  :on-mount (fn [node]
+  :on-mount (fn [node {:keys [tease?]}]
               (let [swipee (some-> node .-firstChild .-nextSibling)
                     hidden-width (some-> node .-firstChild .-clientWidth)
                     pos (atom {:x 0 :left 0})
@@ -28,20 +34,21 @@
                                   (set-left swipee (js/Math.min left-pos 0))))
                     touchend (fn [e]
                                (let [diff (- (parse-num (.-left (.-style swipee))) (:left @pos))]
-                                 (set! (.-transition (.-style swipee)) "left 0.15s")
-                                 (js/setTimeout
-                                  #(if (and (< diff 0)
-                                            (< (/ hidden-width 4) (js/Math.abs diff)))
-                                     (set-left swipee (- hidden-width))
-                                     (set-left swipee 0))
-                                  0)
-                                 (js/setTimeout #(set! (.-transition (.-style swipee)) "") 100)))]
+                                 (animate-left-pos
+                                  swipee
+                                  (if (and (< diff 0)
+                                           (< (/ hidden-width 4) (js/Math.abs diff)))
+                                    (- hidden-width)
+                                    0))))]
                 (.addEventListener node "touchstart" touchstart false)
                 (.addEventListener node "mousedown" touchstart false)
                 (.addEventListener node "touchmove" touchmove false)
                 (.addEventListener node "mousemove" touchmove false)
                 (.addEventListener node "touchend" touchend false)
-                (.addEventListener node "mouseup" touchend false)))
+                (.addEventListener node "mouseup" touchend false)
+                (when tease?
+                  (js/setTimeout #(animate-left-pos swipee (- (* hidden-width 0.75)) 500) 500)
+                  (js/setTimeout #(animate-left-pos swipee 0 500) 1500))))
   [{:keys [swipee hidden]}]
   (d/div {:style {:position "relative"}}
     (d/div {:style {:position "absolute"

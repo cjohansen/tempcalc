@@ -9,6 +9,7 @@
                                 (cond-> x
                                   (not (:temperature x)) (merge {:temperature (get-in calculated [idx :temperature])
                                                                  :calculated? true})
+                                  (= idx 0) (assoc :tease? true)
                                   :true (assoc :actions {:remove [[:remove-item idx]]
                                                          :set-amount [[:assoc-in-state [:items idx :amount]]]
                                                          :set-temp [[:assoc-in-state [:items idx :temperature]]]})

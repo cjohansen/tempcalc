@@ -44,6 +44,7 @@
             :borderBottom "none"
             :borderTop (str "2px solid " (or color "#b5d1e0"))
             :color "#000"
+            :opacity 1
             :MozAppearance "none"
             :WebkitAppearance "none"
             :appearance "none"}}))
@@ -52,7 +53,7 @@
   (d/div {:className "mod grid"}
     (map #(d/div {:className "col"} %) cols)))
 
-(defcomponent Item [{:keys [amount temperature calculated? actions]}]
+(defcomponent Item [{:keys [amount temperature calculated? tease? actions]}]
   (let [row (Row
              (d/div {:style {:marginRight 20}} (NumberInput {:value amount
                                                              :on-input (partial publish (:set-amount actions))}))
@@ -69,7 +70,7 @@
                                        :color "#c00"}))]
     (if calculated?
       row
-      (SwipeReveal {:swipee row :hidden button}))))
+      (SwipeReveal {:swipee row :hidden button :tease? tease?}))))
 
 (defcomponent App [state]
   (d/div {}
