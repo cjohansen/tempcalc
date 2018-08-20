@@ -8,6 +8,10 @@ are 24C, your yeast is 4C. Given 1000 grams of flour, 20 grams of salt, 4 grams
 of yeast and 750 grams of water, what temperature should the water be? This app
 tells you.
 
+[tempcalc.com](https://tempcalc.com) runs this code. It's got nice PWA-y
+features, so you can add it to your phone home screen for quick and convenient
+access.
+
 ## License
 
 Copyright © 2018 Christian Johansen
