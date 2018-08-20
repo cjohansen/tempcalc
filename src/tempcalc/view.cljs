@@ -43,6 +43,7 @@
             :borderRight "none"
             :borderBottom "none"
             :borderTop (str "2px solid " (or color "#b5d1e0"))
+            :color "#000"
             :MozAppearance "none"
             :WebkitAppearance "none"
             :appearance "none"}}))
