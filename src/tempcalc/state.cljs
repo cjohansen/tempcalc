@@ -19,7 +19,9 @@
   (assoc state :items (conj (vec (calc/solve (:temperature state) (:items state))) {:amount 0})))
 
 (defmethod exec-action :remove-item [_ state idx]
-  (update state :items #(concat (subvec % 0 idx) (subvec % (inc idx)))))
+  (update state :items #(if (= idx 0)
+                          (drop 1 %)
+                          (concat (subvec % 0 idx) (subvec % (inc idx))))))
 
 (defn publish [actions & args]
   (reset! store (reduce (fn [state [action & action-args]]
